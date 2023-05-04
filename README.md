@@ -1,5 +1,4 @@
-# CIDRS
-CIDRS 
-To be continue...
+# IIDRS
+IIDRS 
 
-We will publish our dataset and codes soon.
+We will release our dataset and codes after the review.
