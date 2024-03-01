@@ -11,3 +11,5 @@ Model/CLIP/cn_clip/__pycache__
 Model/CLIP/cn_clip/clip/__pycache__
 Model/CLIP/usage/__pycache__
 Model/fur_rl/__pycache__
+recommdationReady/datajson
+recommdationReady/datasets
