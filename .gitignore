@@ -14,5 +14,9 @@ Model/fur_rl/__pycache__
 recommdationReady/datajson
 recommdationReady/datasets
 Model/fur_rl/models/__pycache__
+get_feedback/feed_back_v1.py
+get_feedback/feed_back_v2.py
+get_feedback/RecommendationSystem_v1.py
+get_feedback/test.py
 .bashrc
 .DS_Store
