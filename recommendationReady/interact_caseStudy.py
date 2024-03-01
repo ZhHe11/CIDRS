@@ -228,11 +228,11 @@ def txt_embed(t_txt, g_txt, fb_txt, net, batch_size, device1):
 def main():
     net = DQN_v3(sentence_clip_model, sentence_clip_preprocess, device=device1)
     # load objs
-    with open('./dict_img.json', 'r') as f:
+    with open('./datajson/dict_img.json', 'r') as f:
         load_dict_train = json.load(f)
-    with open('./dict-test0304.json', 'r') as f:
+    with open('./datajson/dict-test0304.json', 'r') as f:
         load_dict_test = json.load(f)
-    with open('./dict-real.json', 'r') as f:
+    with open('./datajson/dict-real.json', 'r') as f:
         load_dict_test_r = json.load(f)
 
     # load data

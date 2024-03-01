@@ -21,17 +21,32 @@ git clone git@github.com:ZhHe11/IIDRS.git
 cd IIDRS
 
 # Install dependencies
+conda create -n iidrs python=3.9
+conda activate iidrs
 pip install -r requirements.txt
-
 ```
 
 ## Usage 
 Here's a simple example of how to use our code and models:
 
 ```
-
+cd recommendationReady
+python interact_rl.py
 ```
 
+## Support 
+If you encounter any issues or have questions, please file an issue on this GitHub repository.
 
-
+## Citation
+If you find our dataset, code, or models useful in your research, please consider citing our paper:
+```
+@inproceedings{10.1145/3581783.3612420,
+author = {Zhang, He and Sun, Ying and Guo, Weiyu and Liu, Yafei and Lu, Haonan and Lin, Xiaodong and Xiong, Hui},
+title = {Interactive Interior Design Recommendation via Coarse-to-fine Multimodal Reinforcement Learning},
+year = {2023},
+publisher = {Association for Computing Machinery},
+booktitle = {Proceedings of the 31st ACM International Conference on Multimedia},
+series = {MM '23}
+}
+```
 

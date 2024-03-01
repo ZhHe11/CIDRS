@@ -63,10 +63,10 @@ class Retriever_v3(nn.Module):
         x = self.Attn_seq(q=txt, k=txt, v=txt)      # [batch, 24, 512]
         x = self.tanh(self.fc_seq0(x))         # [batch, 24, 1]
         x = x.squeeze(dim=2).unsqueeze(dim=1)       # [batch, 1, 24]
-        # for baseline greedy
-        x = torch.ones(x.shape, device=self.device)     # [batch, 1, 24]
-        print("for baseline greedy")
-        # for baseline
+        # # for baseline greedy
+        # x = torch.ones(x.shape, device=self.device)     # [batch, 1, 24]
+        # print("for baseline greedy")
+        # # for baseline
         # print("weight: ", x)
         x = torch.bmm(x, actions_matric).squeeze(dim=1)  # actions_matric[batch, 24, 2000] x [batch, 2000]
         # normalize
@@ -253,12 +253,12 @@ class DQN_v3():
             q_eval[i][0] = q[i][b_a[i][0]].to(device)           # 取值范围(-1，1) [batch, k]
         q_next = self.actor_net(b_g_, b_f_, b_d_, ranker, k)[1].detach()
 
-        q_target = b_r + 0.8 * q_next.max(1)[0].view(b_a.shape[0], 1)
-        delta = q_target - q_eval
+        # q_target = b_r + 0.8 * q_next.max(1)[0].view(b_a.shape[0], 1)
+        # delta = q_target - q_eval
         # delta = b_r - q_eval_temp
         # print('q_target', q_target[0], 'q_eval', q_eval_temp[0], 'delta', delta[0])
         # print("log_probs_temp", max_score, "b_r", b_r, "log(p)", torch.log(log_probs_temp))
-        actor_loss = -(torch.log(log_probs).t() @ b_r.detach()).float()
+        # actor_loss = -(torch.log(log_probs).t() @ b_r.detach()).float()
         actor_loss = 0
         # critic_loss = torch.mean(delta ** 2).float()
         # critic_loss = torch.mean((b_r/5 - q_eval) ** 2).float()
@@ -270,18 +270,14 @@ class DQN_v3():
             s_loss_tmp = - b_reward[i][0] * torch.log(p_db[i][b_t[i][0].long()])
             weight_loss += s_loss_tmp
         weight_loss = weight_loss.float()
+        # weight_loss = weight_loss
         # weight_loss = 0
         ## total loss
-        loss = 1 * actor_loss + 1 * weight_loss
+        loss = weight_loss
         if loss != 0:
             self.actor_optimizer.zero_grad()
-            print("actor_loss", actor_loss, "critic_loss", critic_loss, "weight_loss", weight_loss)
+            print("weight_loss", weight_loss)
             loss.backward()
             self.actor_optimizer.step()
 
         return actor_loss, critic_loss
-
-
-
-
-
